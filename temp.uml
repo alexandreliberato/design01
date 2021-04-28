@@ -1,0 +1,16 @@
+@startuml
+participant ServicoOrigem01 as so1
+participant ServicoOrigem02 as so2
+participant Verificador as vf
+participant ServicoDestino as sd
+Database Database as db
+
+so1 --> db: insere dado
+so2 --> db: insere dado
+loop verifica integridade
+    vf --> db: checa integridade
+    alt dados integros
+        vf --> sd: envia dados
+    end
+end
+@enduml
